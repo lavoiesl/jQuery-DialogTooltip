@@ -122,6 +122,8 @@
         })
         .appendTo(holder);
 
+        holder.append(" ");
+
     },
 
     trigger_event: function(event, options) {
