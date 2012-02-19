@@ -1,0 +1,103 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+  <meta charset="UTF-8">
+  <title>jQuery DialogTooltip Demo</title>
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+  <script src="jQuery.dialogTooltip.js"></script>
+
+  <style>
+    body {
+      background-color: #ddd;
+    }
+    #dialog-tooltip {
+      position: absolute;
+      overflow: visible;
+      padding: 0.8em;
+      border: 3px solid #fff;
+      font-size: 12px;
+      text-align: center;
+      background: #f1f1f1 url(background.gif) repeat bottom left scroll;
+      z-index: 1000;
+    }
+
+    #dialog-tooltip .arrow {
+      position: absolute;
+      height: 21px;
+      width: 21px;
+      bottom: -21px;
+      left: 15%;
+      z-index: 1001;
+      background: transparent url(arrow.gif) no-repeat top left scroll;
+    }
+
+    #dialog-tooltip-holder #dialog-tooltip {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <h1>jQuery DialogTooltip Demo</h1>
+  <p style="margin: 300px 100px">
+    <a href="#" id="dialog-tooltip-anchor">Show</a>
+  </p>
+  <div id="dialog-tooltip-holder">
+    <div id="dialog-tooltip">
+      <h4>
+        <span class="title">Attention!</span>
+      </h4>
+      <hr class="dashed">
+      <p class="message">
+        Are you sure you want to continue ?
+      </p>
+      <div class="actions">
+        <a href="#" class="button" data-action="cancel">No</a>
+        <a href="#" class="button" data-action="confirm">Yes</a>
+      </div>
+      <span class="arrow"></span>
+    </div>
+  </div>
+  <script>
+    var tooltip = $('#dialog-tooltip')
+      .dialogTooltip()
+      .on('dialogTooltip.show', function(event,data){
+        console.log("Dialog has been shown", data);
+      })
+      .on('dialogTooltip.hide', function(event,data){
+        console.log("Dialog has been hidden", data);
+      });
+
+    tooltip.on('click', '.cancel', function(e){
+      e.preventDefault();
+      tooltip.dialogTooltip('hide');
+    });
+
+    var tooltip_anchor = $('#dialog-tooltip-anchor')
+      .dialogTooltipAnchor({
+        buttons: [
+          'cancel',
+          {
+            id: 'confirm',
+            label: 'Confirm',
+            action: function() {
+              return true;
+            }
+          }
+        ]
+      })
+      .on('dialogTooltip.show', function(event,data){
+        console.log("Anchor has been shown", data);
+      })
+      .on('dialogTooltip.hide', function(event,data){
+        console.log("Anchor has been hidden", data);
+      })
+      .on('dialogTooltip.action.cancel', function(event,data){
+        console.log("Anchor has been canceled", data);
+      })
+      .on('dialogTooltip.action.confirm', function(event,data){
+        console.log("Anchor has been confirmed", data);
+      });
+  </script>
+</body>
+</html>

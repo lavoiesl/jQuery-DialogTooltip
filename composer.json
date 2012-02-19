@@ -1,0 +1,13 @@
+{
+    "name": "lavoiesl/jQuery-DialogTooltip",
+    "type": "jquery-plugin",
+    "description": "jQuery plugin that pops a tooltip, including an arrow, containing buttons (ok/cancel)",
+    "keywords": ["jQuery"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Sébastien Lavoie",
+            "email": "github@lavoie.sl"
+        }
+    ]
+}
