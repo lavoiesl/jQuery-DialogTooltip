@@ -23,7 +23,7 @@
       var data = {
         settings: settings,
         actions_holder: $(settings.actions_holder, this),
-        arrow: $(settings.arrow),
+        arrow: $(settings.arrow, this),
         holder: this.parent(),
         documentClick: function(e){
           // Prevent hiding on self
