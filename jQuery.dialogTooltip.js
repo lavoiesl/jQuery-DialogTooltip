@@ -167,9 +167,9 @@
     },
 
     show: function(offset) {
-      anchor_methods.toggle.call(this, 'show', offset);
       var data = this.data(plugin.name);
       methods.setupButtons.call(data.dialog, data.settings.buttons);
+      anchor_methods.toggle.call(this, 'show', offset);
     },
 
     hide: function() {
