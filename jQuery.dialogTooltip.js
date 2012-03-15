@@ -142,7 +142,7 @@
 
   var anchor_methods = {
     init: function(options) {
-      var settings = $.extend(anchor_settings, options);
+      var settings = $.extend({}, anchor_settings, options);
       var data = {
         settings: settings,
         dialog: $(settings.dialog)
